@@ -10,10 +10,18 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
+// モード状態を保持
+let mode = 'normal'; // normal or gpt4
+
+// 会話履歴を保持（システムプロンプト含む）
+let conversationHistory = [
+  { role: 'system', content: 'あなたは関西弁で話す親切なゲームに詳しいアシスタントです。' }
+];
+
 client.once('ready', async () => {
   console.log(`✅ Logged in as ${client.user.tag}`);
 
-  // グローバルコマンド登録
+  // グローバルコマンド「/mode」を登録
   await client.application.commands.create({
     name: 'mode',
     description: 'GPTのモードを切り替えます (normal / gpt4)',
@@ -33,14 +41,7 @@ client.once('ready', async () => {
   console.log('✅ グローバル /mode コマンドを登録しました');
 });
 
-// 会話履歴保存用
-let conversationHistory = [
-  { role: 'system', content: 'あなたは関西弁で喋るゲームについて詳しい専門家です。難しい専門用語もわかりやすく説明してください。' }
-];
-
-// モード状態を保持
-let mode = 'normal'; // normal or gpt4
-
+// interaction (slash command)
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) return;
 
@@ -55,47 +56,39 @@ client.on('interactionCreate', async (interaction) => {
   }
 });
 
+// !ask メッセージコマンド
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
 
-  // !helloコマンドはそのまま残す
-  if (message.content === '!hello') {
-    message.channel.send('こんにちは！ChatGPTアシスタントです！');
-  }
-
-  // ChatGPT連携コマンド：!ask
   if (message.content.startsWith('!ask')) {
     const userPrompt = message.content.replace('!ask', '').trim();
     if (!userPrompt) {
-      return message.reply('質問内容を入力してください！ 例: !ask ネザーゲートの作り方は？');
+      return message.reply('❗ 質問内容を入力してください（例：!ask マイクラの始め方）');
     }
 
-    // 履歴に今回のユーザー発言を追加
-    conversationHistory.push({ role: 'user', content: userPrompt });
-
     await message.channel.send('🤖 ChatGPTが考え中...');
+
+    // 会話履歴にユーザーのメッセージを追加
+    conversationHistory.push({ role: 'user', content: userPrompt });
 
     try {
       const completion = await openai.chat.completions.create({
         model: (mode === 'gpt4') ? 'gpt-4' : 'gpt-3.5-turbo',
-        messages: conversationHistory,
-        max_tokens: 2000
+        max_tokens: 3000,
+        messages: conversationHistory
       });
 
       const reply = completion.choices[0].message.content;
 
-      // 履歴にAIの返答も追加
+      // 会話履歴にアシスタントの返信を追加
       conversationHistory.push({ role: 'assistant', content: reply });
 
       message.reply(reply);
     } catch (error) {
-      console.error(error);
+      console.error('OpenAIエラー:', error);
       message.reply('⚠️ ChatGPTへの接続に失敗しました。');
     }
   }
 });
-
-// ※ 注意: Discord Developer Portal またはデプロイスクリプトで「/mode」コマンドを登録してください。
-// オプション: type (choices: normal, gpt4)
 
 client.login(process.env.DISCORD_TOKEN);

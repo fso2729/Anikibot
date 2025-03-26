@@ -8,9 +8,18 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "discord.js": "^14.18.0",
-    "dotenv": "^16.4.7"
-  }
+    "dotenv": "^16.4.7",
+    "openai": "^4.89.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fso2729/my-discord-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fso2729/my-discord-bot/issues"
+  },
+  "homepage": "https://github.com/fso2729/my-discord-bot#readme",
+  "description": ""
 }
