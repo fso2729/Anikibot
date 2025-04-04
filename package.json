@@ -1,0 +1,27 @@
+{
+  "name": "my-discord-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/voice": "^0.18.0",
+    "axios": "^1.8.4",
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7",
+    "openai": "^4.90.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fso2729/my-discord-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fso2729/my-discord-bot/issues"
+  },
+  "homepage": "https://github.com/fso2729/my-discord-bot#readme",
+  "description": ""
+}
