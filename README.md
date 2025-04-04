@@ -89,6 +89,7 @@ MIT License
 - [Discloud](https://discloud.com/)
 - [SerpAPI](https://serpapi.com/)
 - [VOICEVOX](https://voicevox.hiroshiba.jp/)（実装未定)
+- [illustimage](https://illustimage.com/help.php)(アイコン利用)
 
 ---
 
