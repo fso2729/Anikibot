@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>兄貴bot公式サイト</title>
+  <style>
+    body {
+      font-family: "MS Gothic", sans-serif;
+      background-color: #dcdcdc;
+      color: black;
+      margin: 0;
+      padding: 0;
+      background-image: repeating-linear-gradient(45deg, rgba(144, 238, 144, 0.1) 0%, rgba(144, 238, 144, 0.1) 1px, transparent 1px, transparent 100%);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin: 0.5rem 0;
+    }
+    hr {
+      border: 1px solid black;
+    }
+    section {
+      background-color: #ffffff;
+      border: 1px solid #000000;
+      padding: 0.5rem;
+      width: 100%;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #333333;
+      margin: 1rem 0;
+    }
+    a {
+      color: blue;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+    <h1>兄貴botホームページ</h1>
+    <hr>
+    
+    <section>
+        <h2>ペットボトル兄貴</h2>
+        <img src="https://illustimage.com/photo/10870.png?20191113" alt=ペットボトル兄貴 width="300">
+        <p>画像利用 <a href="https://illustimage.com/help.php" target="_blank">イラストイメージ様</a> </p>
+    </section>
+    
+    <section>
+        <h2>Botを導入する</h2>
+        <p>サーバーにAnikiBotを導入したい方は以下から招待してください。</p>
+        <p><a href="https://discord.com/oauth2/authorize?client_id=1351918794452504617&permissions=274878212288&scope=bot%20applications.commands" target="_blank">👉 AnikiBotをDiscordに招待する</a></p>
+    </section>
+    
+    <section>
+        <h2>自分でBotを設定する</h2>
+        <p>GitHubからコードを保存し、自分でbotを設定することも可能です。</p>
+        <ol>
+          <li>GitHubからコピー：
+            <pre><code>git clone https://github.com/fso2729/Anikibot.git</code></pre>
+          </li>
+          <li>必要データをインストール：
+            <pre><code>npm install</code></pre>
+          </li>
+          <li>.envを作成してAPIキーを設定</li>
+          <li>Botを起動：
+            <pre><code>node index.js</code></pre>
+          </li>
+        </ol>
+    </section>
+    
+    <section>
+        <h2>コマンド一覧</h2>
+        <ul>
+          <li><code>!ask</code> - 質問</li>
+          <li><code>!chat</code> - 雑談</li>
+          <li><code>!search</code> - 検索</li>
+          <li><code>!reset</code> - 会話履歴リセット</li>
+          <li><code>!help</code> - ヘルプ表示</li>
+        </ul>
+    </section>
+    
+    <section>
+        <h2>開発者向け</h2>
+        <p>このBotはNode.js + OpenAI APIを利用して作成されています。githubにて公開中。</p>
+        <p><a href="https://github.com/fso2729/Anikibot" target="_blank">👉 GitHubリポジトリを開く</a></p>
+    </section>
+    
+    <footer>
+        <p>created byえふそ</p>
+    </footer>
+    
+</body>
+</html>
